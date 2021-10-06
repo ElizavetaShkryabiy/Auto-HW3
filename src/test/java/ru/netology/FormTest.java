@@ -1,14 +1,15 @@
 package ru.netology;
 
 import com.codeborne.selenide.SelenideElement;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
@@ -17,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class FormTest {
     private WebDriver driver;
-    ChromeOptions options = new ChromeOptions();
+//    ChromeOptions options = new ChromeOptions();
 
     @BeforeAll
     static void setUpAll() {
@@ -26,16 +27,17 @@ public class FormTest {
 
     @BeforeEach
     void setUp() {
-        driver = new ChromeDriver(options);
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+        driver = new ChromeDriver();
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
     }
 
     @AfterEach
     void tearDown() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
