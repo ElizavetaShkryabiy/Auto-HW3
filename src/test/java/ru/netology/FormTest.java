@@ -20,7 +20,7 @@ public class FormTest {
 
     @BeforeAll
     static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\User\\Documents\\HW\\Java\\Autom\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\User\\Documents\\HW\\Auto\\chromedriver.exe");
 //        WebDriverManager.chromedriver().setup();
     }
 
