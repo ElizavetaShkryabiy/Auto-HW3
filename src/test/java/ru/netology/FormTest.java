@@ -35,7 +35,7 @@ public class FormTest {
     }
 
     @Test
-    public void shouldReturnOK() {
+    public void shouldTestHappyPath() {
         driver.get("http://localhost:9999");
         open("http://localhost:9999");
         SelenideElement form = $(".form");
@@ -45,4 +45,18 @@ public class FormTest {
         form.$(".button").click();
         $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
+
+    @Test
+    public void shouldReturnErrorWhenWrongData() {
+        driver.get("http://localhost:9999");
+        open("http://localhost:9999");
+        SelenideElement form = $(".form");
+        form.$("[data-test-id=name] input").setValue("Vasya");
+        form.$("[data-test-id=phone] input").setValue("+79271112233");
+        form.$("[data-test-id=agreement]").click();
+        form.$(".button").click();
+        $("[input_invalid] input");
+    }
+
+
 }
