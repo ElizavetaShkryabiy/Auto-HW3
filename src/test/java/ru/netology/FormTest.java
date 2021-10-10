@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
@@ -17,22 +15,18 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 public class FormTest {
-    private WebDriver driver;
-//    ChromeOptions options = new ChromeOptions();
+    WebDriver driver;
 
     @BeforeAll
     static void setUpAll() {
         WebDriverManager.chromedriver().setup();
     }
 
+
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver();
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
     }
-
     @AfterEach
     void tearDown() {
         if (driver != null) {
@@ -45,7 +39,7 @@ public class FormTest {
         driver.get("http://localhost:9999");
         open("http://localhost:9999");
         SelenideElement form = $(".form");
-        form.$("[data-test-id=name] input").setValue("Василий Дорохин");
+        form.$("[data-test-id=name] input").setValue("Василий Пупкин");
         form.$("[data-test-id=phone] input").setValue("+79271112233");
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
