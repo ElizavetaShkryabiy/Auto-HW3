@@ -21,7 +21,7 @@ public class FormTest {
     @BeforeAll
     static void setUpAll() {
         System.setProperty("webdriver.chrome.driver","build/tmp/chromedriver.exe");
-//        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
     }
 
 
