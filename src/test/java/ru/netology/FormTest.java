@@ -2,6 +2,7 @@ package ru.netology;
 
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
+
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.*;
@@ -31,6 +32,8 @@ public class FormTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(".input_invalid[data-test-id=name]").shouldBe(appear);
+        $(".input__sub", 0).shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
+
     }
 
     @Test
@@ -43,6 +46,7 @@ public class FormTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(".input_invalid[data-test-id=phone]").shouldBe(appear);
+        $(".input__sub", 1).shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -68,6 +72,7 @@ public class FormTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(".input_invalid[data-test-id=name]").shouldBe(appear);
+        $(".input__sub", 0).shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
     @Test
@@ -80,6 +85,7 @@ public class FormTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(".input_invalid[data-test-id=name]").shouldBe(appear);
+        $(".input__sub", 0).shouldHave(exactText("Поле обязательно для заполнения"));
     }
 
     @Test
@@ -92,6 +98,7 @@ public class FormTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(".input_invalid[data-test-id=phone]").shouldBe(appear);
+        $(".input__sub", 1).shouldHave(exactText("Поле обязательно для заполнения"));
     }
 
 
